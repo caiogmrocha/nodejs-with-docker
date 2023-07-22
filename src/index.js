@@ -1,4 +1,6 @@
 const express = require('express');
+const { env } = require('./config/env');
+const knex = require("./config/knex")
 
 const app = express();
 
@@ -10,7 +12,4 @@ app.get('/', (req, res) => {
     });
 });
 
-const IP = '0.0.0.0';
-const PORT = 3333;
-
-app.listen(PORT, IP, () => console.log(`Server is running at http://${IP}:${PORT}`));
+app.listen(env.HTTP_PORT, env.HTTP_IP, () => console.log(`Server is running at http://${env.HTTP_IP}:${env.HTTP_PORT}`));
